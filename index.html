@@ -1,0 +1,532 @@
+<!-- Jada Johnson, 2209658, CIT2011, 19/6/2025 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg">
+
+  <title>Florescence: Life Blooms Here</title>
+</head>
+
+<body>
+
+  <!--   header section -->
+  <header class="header">
+
+    <div class="alert">
+      <div class="container">
+        <p class="alert-text">Free Shipping On All U.S. Orders $50+</p>
+      </div>
+    </div>
+
+    <div class="header-top">
+      <button class="main-btn acc-btn" id="openModalBtn">
+        Login / Sign Up
+      </button>
+      
+      <a href="#" class="logo">
+        Florescence
+      </a>
+      
+      <div class="header-actions">
+        <button class="header-action-btn user hideOnMobile have-acc" aria-label="user">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <button class="header-action-btn fav hideOnMobile" aria-label="favourite item">
+          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+          <span class="btn-badge">0</span>
+        </button>
+
+        <button class="header-action-btn cart hideOnMobile" aria-label="cart item">
+          <ion-icon name="basket-outline"></ion-icon>
+          <span class="btn-badge" id="cart-count">0</span>
+        </button>
+
+        <button class="header-action-btn menu" aria-label="menu item" onclick="showSidebar()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <nav class="navbar hideOnMobile">
+      <ul class="navbar-list">
+        <li>
+          <a href="index.html" class="navbar-link">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link">About Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="sidebar">
+      <ul class="navbar-list">
+        <li onclick="hideSidebar()">
+          <ion-icon name="close-outline"></ion-icon>
+        </li>
+        <li>
+          <a href="index.html" class="navbar-link has-after">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link has-after">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link has-after">About Us</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">My Cart</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">My Profile</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after" id="openModalBtn">Login / Sign Up</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">Favourites</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="toastBox">
+      
+    </div>
+
+  <!--   login/register forms -->
+  <div id="loginRegisterModal" class="modal">
+    <div class="modal-content">
+      <div class="form-con">
+        <ion-icon name="close-outline" class="form-cancel"></ion-icon>
+        
+        <div class="col col-1">
+          <div class="image-layer">
+            <img src="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg" alt="Florescence Logo" class="form-img">
+          </div>
+          <p class="feat-words">A plethora of deals awaits you </p>
+        </div>
+
+        <div class="col col-2">
+          <div class="btn-box">
+            <button class="btn btn-1" id="login">
+              Sign In
+            </button>
+
+            <button class="btn btn-2" id="register">
+              Sign Up
+            </button>
+          </div>
+
+          <form class="login-form" id="login-form">
+            <div class="form-title">
+              <span>Sign In</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="input-box">
+                <input type="text" placeholder="Username..." class="input-field" required minlength="6">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+
+              <div class="input-box">
+                <input type="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#">Forgot Password?</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-in-btn">
+                  <span>Sign In</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+
+          <form class="register-form" id="register-form">
+            <div class="form-title">
+              <span>Register</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="grid">
+                <div class="input-box">
+                  <input type="text" placeholder="First Name..." id="first-name" class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="last-name" placeholder="Last Name..." class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="email" id="email" placeholder="Email..." class="input-field" required pattern=".+@gmail\.com">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="username" placeholder="Username..." class="input-field" required minlength="6">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+              </div>
+
+              <label for="dob">Date Of Birth</label>
+              <div class="input-box">
+                <input type="date" id="dob" class="input-field" required max="2012-12-31">
+              </div>
+
+              <div class="input-box">
+                <input type="password" id="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#login">Already have an account? Login Now!</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-up-btn">
+                  <span>Register</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--   hero section -->
+  <section class="hero">
+    <div class="con">
+      <h3>Sale of the Century</h3>
+      <h1>Biggest Markdowns By Far</h1>
+      <h2>Get them before it's too late</h2>
+      <button class="hero-btn" onclick="window.location.href='shop.html'">
+        SHOP NOW
+        <span>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!--   category section -->
+  <section class="section">
+    <div class="category-con cat-con">
+      <div class="category">
+        <img src="/Assets/cat-img-1.jpg" alt="Garden Decor Card">
+        <button onclick="window.location.href='shop.html#garden-decor'">Garden Decor</button>
+      </div>
+      
+      <div class="category">
+        <img src="/Assets/cat-img-2.jpg" alt="Fertilizer Card">
+        <button onclick="window.location.href='shop.html#fertilizers'">Fertilizers</button>
+      </div>
+      
+      <div class="category">
+        <img src="/Assets/cat-img-3.jpg" alt="Flower Card">
+        <button onclick="window.location.href='shop.html#flower-pots'">Flowers</button>
+      </div>
+      
+      <div class="category">
+        <img src="/Assets/cat-img-4.jpg" alt="Garden Tools Card">
+        <button onclick="window.location.href='shop.html#garden-tools'">Garden Tools</button>
+      </div>
+    </div>
+  </section>
+  
+  <!--   services section -->
+  <section class="services">
+    <div class="services-con">
+      <div class="service-box">
+        <ion-icon name="airplane-outline"></ion-icon>
+        <span>Fast Shipping</span>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eos tenetur itaque sequi pariatur earum voluptatibus vitae quam dolorum corrupti saepe cupiditate sunt aliquam quisquam eum minima laudantium, doloribus maiores.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <ion-icon name="call-outline"></ion-icon>
+        <span>Excellent Customer Service</span>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eos tenetur itaque sequi pariatur earum voluptatibus vitae quam dolorum corrupti saepe cupiditate sunt aliquam quisquam eum minima laudantium, doloribus maiores.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <ion-icon name="sync-outline"></ion-icon>
+        <span>Money Back Guraranteed</span>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat eos tenetur itaque sequi pariatur earum voluptatibus vitae quam dolorum corrupti saepe cupiditate sunt aliquam quisquam eum minima laudantium, doloribus maiores.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!--   sale section -->
+  <section class="section">
+    <div class="sale-con">
+      <h3>New Trend 2025</h3>
+      <div class="line"></div>
+      <h1>Summer Collection</h1>
+      <h4>Big Sale</h4>
+      <a href="#summer-collection">Shop Now</a>
+    </div>
+  </section>
+
+  <!--  summer collection section -->
+  <section class="product-con" id="summer-collection">
+    <h1>Bloom & Zoom: The Summer Collection</h1>
+    <p>Prepare to brighten your spaces!  Our summer blowout flower sale has arrived, with fantastic reductions on a magnificent selection of blossoms.  Find the ideal flowers to brighten up your garden or home, from lively annuals to exquisite perennials.  Shop now for limited-time savings on your favorite flavors, delivered right to your door.  Don't miss out on these blossoming bargains!</p>
+    
+    <div class="products">
+      <div class="product">
+      
+      <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/euphorbia-hybrid.jpg" alt="Flower Pot" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Diamond Frost® - Euphorbia Hybrid</h4>
+          <span class="product-price">$29.99 <del>$49.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/lavender-rose.jpg" alt="Flower Pot" class="product-img">
+        <span>Almost Out Of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Boldly® Lavender Rose - Geranium - Pelargonium interspecific</h4>
+          <span class="product-price">$10.49 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/molten-pearl.jpg" alt="Flower Pot" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Molten Pearl</h4>
+          <span class="product-price">$19.99 <del>$29.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/verbena-hybrid.jpg" alt="Flower Pot" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Superbena® Peachy Keen - Verbena Hybrid</h4>
+          <span class="product-price">$34.99 <del>$49.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/impatiens-walleriana.jpg" alt="Impatiens Walleriana" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Superbells® Yellow Calibrachoa</h4>
+          <span class="product-price">$29.99 <del>$69.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/coralina-calibrachoa.jpg" alt="Superbells® Coralina Calibrachoa" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Superbells Magic® Pink Lemonade Calibrachoa (Calibrachoa hybrid)</h4>
+          <span class="product-price">$34.99 <del>$59.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/pelargonium-interspecific.jpg" alt="Pelargonium Interspecific" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">1 Gal. Dianthus Carnation Mix in Decorative Tabletop Bowl Pink Perennial Plant (1-Pack)</h4>
+          <span class="product-price">$27.49 <del>$49.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="/Assets/begonia-semperflorens.jpg" alt="Begonia Semperflorens" class="product-img">
+        <span>Almost Out of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Blooming Artificial - Decorative Artificial Flowers, Realistic Fake Flowers, Year Round Decorative Geranium Plant for Outdoors, UV and Water Resistant (White)</h4>
+          <span class="product-price">$12.49 <del>$32.49</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+      
+        </div>
+    </div>
+    
+  </section>
+
+  <!--   partners section -->
+  <section class="partners">
+    <div class="partners-con">
+      <img src="/Assets/home-depot-logo.png" alt="Home Depot">
+      <img src="/Assets/disney.png" alt="Disney">
+      <img src="https://cdn.iconscout.com/icon/free/png-256/free-lego-logo-icon-download-in-svg-png-gif-file-formats--game-play-brands-and-logos-pack-icons-2673857.png?f=webp&w=256" alt="LEGO">
+      <img src="/Assets/nick.png" alt="Nickelodeon">
+    </div>
+  </section>
+
+  <!--   cart section -->
+  <div class="cart-list" id="cart-list">
+    <div class="cart-head">
+      <h2>Cart</h2>
+      <button class="close-btn"><ion-icon name="close-outline"></ion-icon></button>
+    </div>
+    
+<!--     cart added items -->
+    <div class="items-list">
+      <ul id="cart-items">
+
+      </ul>
+    </div>
+    
+    <div class="cart-total">Sub Total: $<span id="total-price">0.00</span> </div>
+    
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Check Out</button>
+  </div>
+
+  <!--   footer section -->
+  <footer>
+    <ul class="footer-icons">
+      <li><a href="https://www.instagram.com/flowjamaica/" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+      <li><a href="https://www.facebook.com/FlowJamaica/" target="_blank">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li><a href="https://x.com/FLOWJamaica?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a></li>
+    </ul>
+
+    <ul class="footer-menu">
+      <li>
+        <a href="index.html" class="navbar-link has-after">Home</a>
+      </li>
+
+      <li>
+        <a href="shop.html" class="navbar-link has-after">Shop</a>
+      </li>
+
+      <li>
+        <a href="about.html" class="navbar-link has-after">About Us</a>
+      </li>
+    </ul>
+
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2025 | Designed by Jada Johnson | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

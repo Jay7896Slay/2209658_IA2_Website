@@ -1,0 +1,514 @@
+<!-- Jada Johnson, 2209658, CIT2011, 19/6/2025 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg">
+
+  <title>Florescence: Life Blooms Here</title>
+</head>
+
+<body>
+
+  <!--     purchase confirmation -->
+  <article class="modal-con" id="popup">
+    <div class="content">
+      <ion-icon name="shield-checkmark-outline"></ion-icon>
+      <div class="confirmation-message" id="confirmation-message">
+        <h2>Purchase Confirmation</h2>
+        <p>Are you sure you want to proceed with this purchase?</p>
+        <div class="modal-btns">
+          <button class="modal-btn-confirm">Yes</button>
+          <button class="modal-btn-close">No</button>
+        </div>
+
+      </div>
+
+      <div class="purchase-confirmed" id="purchase-confirmed">
+        <h2>Order Confirmed</h2>
+        <p>Do you want to view your invoice?</p>
+        <div class="modal-btns">
+          <button class="modal-btn-confirm-invoice" id="openInvoiceModal">View Invoice</button>
+          <button class="modal-btn-exit">Exit Message</button>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <!--   invoice section -->
+  <article id="invoiceModal" class="invoice-modal">
+    <div class="invoice-modal-content">
+      <span class="invoice-close-button">&times;</span>
+      <article class="invoice-wrapper">
+        <div class="invoice">
+          <div class="invoice-con">
+            <div class="invoice-head">
+
+              <div class="invoice-head-top">
+                <div class="invoice-head-top-left text-start">
+                  <img src="/Assets/logo.jpg" alt="Logo">
+                  <a href="#" class="logo">
+                    Florescence
+                  </a>
+                </div>
+
+                <div class="invoice-head-top-right text-end">
+                  <h3>Invoice</h3>
+                </div>
+
+                <div class="hr"></div>
+              </div>
+
+              <div class="invoice-head-middle">
+                <div class="invoice-head-middle-left text-start">
+                  <p>
+                    <span class="text-bold">Date:</span>
+                    <span id="invoice-date"> </span>
+                  </p>
+                </div>
+
+                <div class="invoice-head-middle-right text-end">
+                  <p>
+                    <span class="text-bold">Invoice No. </span> <span id="invoice-number">00</span>
+                  </p>
+                </div>
+
+                <div class="hr"></div>
+              </div>
+
+              <div class="invoice-head-bottom">
+                <div class="invoice-head-bottom-left">
+                  <ul>
+                    <li class="text-bold">Invoiced To: </li>
+                    <li id="customer-name">Sammy Jones</li>
+                    <li id="customer-addr">12 ABC Lane Street, Mandeville, Manchester</li>
+                    <li id="customer-zip-code">HP12 3JL</li>
+                    <li id="customer-country">Jamaica</li>
+                  </ul>
+                </div>
+
+                <div class="invoice-head-bottom-right">
+                  <ul class="text-end">
+                    <li class="text-bold">Paid To: </li>
+                    <li>Florescence</li>
+                    <li>237 Old Hope Road, Kingston</li>
+                    <li>Jamaica</li>
+                    <li>2209658@utech.edu.jm</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="overflow-view">
+                <div class="invoice-body">
+                  <table>
+                    <thead>
+                      <td class="text-bold">Item(s)</td>
+                      <td class="text-bold">Rate</td>
+                      <td class="text-bold">Quantity</td>
+                      <td class="text-bold">Amount</td>
+                    </thead>
+
+                    <tbody id="invoice-items-body">
+                    </tbody>
+                  </table>
+
+                  <div class="invoice-body-bottom">
+                    <div class="invoice-body-info-item ">
+                      <p class="info-item-td text-end text-bold border-bottom">
+                        Total Item(s):
+                      </p>
+
+                      <p class="info-item-td text-end border-bottom" id="invoice-items">
+                        1
+                      </p>
+
+                      <p class="info-item-td text-end text-bold border-bottom">
+                        Sub Total:
+                      </p>
+
+                      <p class="info-item-td text-end border-bottom" id="invoice-subtotal">
+                        $2150.00
+                      </p>
+
+                      <p class="info-item-td text-end text-bold border-bottom">
+                        Tax:
+                      </p>
+
+                      <p class="info-item-td text-end border-bottom" id="invoice-tax">
+                        $215.00
+                      </p>
+
+                      <p class="info-item-td text-end text-bold border-bottom">
+                        Shipping:
+                      </p>
+
+                      <p class="info-item-td text-end border-bottom" id="invoice-shipping">
+                        $10.00
+                      </p>
+
+                      <p class="info-item-td text-end text-bold">
+                        Total:
+                      </p>
+
+                      <p class="info-item-td text-end" id="invoice-total">
+                        $21500.00
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="invoice-foot text-center">
+                <p><span class="text-bold text-center">NOTE: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptas cum eaque itaque accusantium blanditiis repudiandae vel quasi, quae officiis obcaecati voluptates sit harum aperiam expedita! Maxime vitae cupiditate expedita.</p>
+
+                <div class="invoice-btns">
+                  <button class="invoice-btn" onclick="printInvoice()">
+                    <span>
+                      <ion-icon name="print-outline"></ion-icon>
+                    </span>
+                    <span>Print</span>
+                  </button>
+
+                  <button class="invoice-btn">
+                    <span>
+                      <ion-icon name="download-outline"></ion-icon>
+                    </span>
+                    <span>Download</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </article>
+
+  <div class="main-con" id="blur">
+
+    <!--   header section -->
+  <header class="header">
+
+    <div class="alert">
+      <div class="container">
+        <p class="alert-text">Free Shipping On All U.S. Orders $50+</p>
+      </div>
+    </div>
+
+    <div class="header-top">
+      <button class="main-btn acc-btn" id="openModalBtn">
+        Login / Sign Up
+      </button>
+      
+      <a href="#" class="logo">
+        Florescence
+      </a>
+      
+      <div class="header-actions">
+        <button class="header-action-btn user hideOnMobile have-acc" aria-label="user">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <button class="header-action-btn fav hideOnMobile" aria-label="favourite item">
+          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+          <span class="btn-badge">0</span>
+        </button>
+
+        <button class="header-action-btn cart hideOnMobile" aria-label="cart item">
+          <ion-icon name="basket-outline"></ion-icon>
+          <span class="btn-badge" id="cart-count">0</span>
+        </button>
+
+        <button class="header-action-btn menu" aria-label="menu item" onclick="showSidebar()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <nav class="navbar hideOnMobile">
+      <ul class="navbar-list">
+        <li>
+          <a href="index.html" class="navbar-link">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link">About Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="sidebar">
+      <ul class="navbar-list">
+        <li onclick="hideSidebar()">
+          <ion-icon name="close-outline"></ion-icon>
+        </li>
+        <li>
+          <a href="index.html" class="navbar-link has-after">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link has-after">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link has-after">About Us</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">My Cart</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">My Profile</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after" id="openModalBtn">Login / Sign Up</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">Favourites</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+    <!--  shopping cart details-->
+    <main class="shop-con">
+      <div class="return-shopping">
+        <button class="return-btn" onclick="window.location.href='shop.html'">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+          <p>Return to Shopping</p>
+        </button>
+      </div>
+
+      <h1 class="heading">
+        <ion-icon name="basket-outline"></ion-icon>
+        Shopping Cart
+      </h1>
+
+      <div class="item-flex">
+        <!--       left column -->
+        <section class="checkout">
+          <h2 class="section-heading">
+            Payment Details
+          </h2>
+
+          <div class="payment-form">
+
+            <div class="payment-method">
+              <button class="method selected">
+                <ion-icon name="card-outline"></ion-icon>
+
+                <span>Credit / Debit Card</span>
+                <ion-icon name="checkmark-circle" class="checkmark"></ion-icon>
+              </button>
+
+              <button class="method">
+                <ion-icon name="logo-paypal"></ion-icon>
+
+                <span>PayPal</span>
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+              </button>
+            </div>
+
+            <form class="card-form">
+
+              <div class="cardholder-name">
+                <label for="cardholder-name" class="label-default"> Cardholder Name</label>
+                <input type="text" name="Cardholder Name" id="cardholder-name" class="input-default" required>
+              </div>
+
+              <div class="card-number">
+                <label for="card-number" class="label-default"> Card Number</label>
+                <input type="text" name="Card Number" id="card-number" class="input-default" maxlength="16" required />
+              </div>
+
+              <div class="input-flex">
+
+                <div class="expiry-day">
+                  <label for="expiry-day" class="label-default">Expiration Date</label>
+
+                  <div class="input-flex">
+                    <input type="text" name="Expiration Month" id="expiry-month" placeholder="12" min="1" max="12" maxlength="2" required>
+                    <p>/</p>
+                    <input type="text" name="Expiration Year" id="expiry-year" placeholder="2025" min="2025" max="2032" maxlength="4" required>
+                  </div>
+                </div>
+
+                <div class="cvv">
+                  <label for="cvv" class="label-default"> CVV </label>
+                  <input type="text" name="CVV" id="cvv" class="input-default" maxlength="3" required>
+                </div>
+
+              </div>
+            </form>
+
+          </div>
+
+          <!--           address form -->
+          <form class="address-form">
+            <h1 class="section-heading">Delivery Address</h1>
+
+            <input type="text" name="Street" id="street" placeholder="Street..." required />
+            <input type="text" name="Town" id="town" placeholder="Town / Apartment..." />
+
+            <div class="address-con">
+              <input type="text" name="City" id="city" placeholder="City..." required />
+              <input type="text" name="State" id="state" placeholder="State..." required />
+              <input type="text" name="Zip Code" id="zip-code" min="0" placeholder="Zip Code..." maxlength="5" />
+            </div>
+
+            <input type="text" name="Country" id="country" placeholder="Country..." />
+
+            <div class="form-btns">
+              <button class="form-btn" type="reset" id="clear-btn">Clear Details</button>
+            </div>
+
+          </form>
+
+        </section>
+
+        <!--       right column -->
+        <section class="checkout-cart">
+          <h2 class="section-heading">
+            Order Summary
+          </h2>
+
+          <!--           user cart items -->
+          <div class="cart-item-box">
+
+          </div>
+
+          <!--           discount/total-amount -->
+          <div class="wrapper">
+            <div class="discount-token">
+              <label for="token" class="label-default">Gift Card / Discount</label>
+
+              <div class="wrapper-flex">
+                <input type="text" name="discount-token" id="discount-token-input" class="discount-default" placeholder="Enter coupon here...">
+
+                <button class="btn discount-btn">Apply</button>
+              </div>
+            </div>
+
+            <div class="amount">
+
+              <div class="total-quantity">
+                <span>Total Item(s)</span> <span>
+                  <span id="total-quantity" class="cart-amount-value">0</span>
+
+                </span>
+              </div>
+
+              <div class="subtotal">
+                <span>Subtotal</span>
+                <span>$ <span id="subtotal" class="cart-amount-value">2.05</span></span>
+              </div>
+
+              <div class="tax">
+                <span>Tax</span>
+                <span>$ <span id="tax" class="cart-amount-value">7.00</span></span>
+              </div>
+
+              <div class="shipping">
+                <span>Shipping</span> <span>$ <span id="shipping" class="cart-amount-value">10.00</span></span>
+              </div>
+
+            </div>
+          </div>
+
+          <!--           final bill -->
+          <div class="after-checkout">
+            <div class="after-checkout-box">
+              <p class="text">Your Total Bill</p>
+              <h1 id="bill" class="cart-amount-value">$0</h1>
+              <button class="checkout-btn" id="purchase-btn">Purchase</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <div id="toastBox">
+      
+    </div>
+    
+    <!--     empty cart section -->
+    <div class="empty-cart-con">
+
+    </div>
+
+    <!--   side shopping cart section -->
+    <div class="cart-list" id="cart-list">
+      <div class="cart-head">
+        <h2>Cart</h2>
+        <button class="close-btn">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </div>
+
+      <!--     cart added items -->
+      <div class="items-list">
+        <ul id="cart-items">
+
+        </ul>
+      </div>
+
+      <div class="cart-total">Sub Total: $<span id="total-price">0.00</span> </div>
+
+      <button class="checkout-btn">Check Out</button>
+    </div>
+
+    <!--   footer section -->
+  <footer>
+    <ul class="footer-icons">
+      <li><a href="https://www.instagram.com/flowjamaica/" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+      <li><a href="https://www.facebook.com/FlowJamaica/" target="_blank">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li><a href="https://x.com/FLOWJamaica?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a></li>
+    </ul>
+
+    <ul class="footer-menu">
+      <li>
+        <a href="index.html" class="navbar-link has-after">Home</a>
+      </li>
+
+      <li>
+        <a href="shop.html" class="navbar-link has-after">Shop</a>
+      </li>
+
+      <li>
+        <a href="about.html" class="navbar-link has-after">About Us</a>
+      </li>
+    </ul>
+
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2025 | Designed by Jada Johnson | All Rights Reserved</p>
+    </div>
+  </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,919 @@
+<!-- Jada Johnson, 2209658, CIT2011, 19/6/2025 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg">
+
+  <title>Florescence: Life Blooms Here</title>
+</head>
+
+<body>
+  <!--   header section -->
+  <header class="header">
+
+    <div class="alert">
+      <div class="container">
+        <p class="alert-text">Free Shipping On All U.S. Orders $50+</p>
+      </div>
+    </div>
+
+    <div class="header-top">
+      <button class="main-btn acc-btn" id="openModalBtn">
+        Login / Sign Up
+      </button>
+      
+      <a href="#" class="logo">
+        Florescence
+      </a>
+      
+      <div class="header-actions">
+        <button class="header-action-btn user hideOnMobile have-acc" aria-label="user">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <button class="header-action-btn fav hideOnMobile" aria-label="favourite item">
+          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+          <span class="btn-badge">0</span>
+        </button>
+
+        <button class="header-action-btn cart hideOnMobile" aria-label="cart item">
+          <ion-icon name="basket-outline"></ion-icon>
+          <span class="btn-badge" id="cart-count">0</span>
+        </button>
+
+        <button class="header-action-btn menu" aria-label="menu item" onclick="showSidebar()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <nav class="navbar hideOnMobile">
+      <ul class="navbar-list">
+        <li>
+          <a href="index.html" class="navbar-link">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link">About Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="sidebar">
+      <ul class="navbar-list">
+        <li onclick="hideSidebar()">
+          <ion-icon name="close-outline"></ion-icon>
+        </li>
+        <li>
+          <a href="index.html" class="navbar-link has-after">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link has-after">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link has-after">About Us</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">My Cart</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">My Profile</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after" id="openModalBtn">Login / Sign Up</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link has-after">Favourites</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="toastBox">
+      
+    </div>
+
+    <!--   login/register forms -->
+  <div id="loginRegisterModal" class="modal">
+    <div class="modal-content">
+      <div class="form-con">
+        <ion-icon name="close-outline" class="form-cancel"></ion-icon>
+        
+        <div class="col col-1">
+          <div class="image-layer">
+            <img src="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg" alt="Florescence Logo" class="form-img">
+          </div>
+          <p class="feat-words">A plethora of deals awaits you </p>
+        </div>
+
+        <div class="col col-2">
+          <div class="btn-box">
+            <button class="btn btn-1" id="login">
+              Sign In
+            </button>
+
+            <button class="btn btn-2" id="register">
+              Sign Up
+            </button>
+          </div>
+
+          <form class="login-form" id="login-form">
+            <div class="form-title">
+              <span>Sign In</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="input-box">
+                <input type="text" placeholder="Username..." class="input-field" required minlength="6">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+
+              <div class="input-box">
+                <input type="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#">Forgot Password?</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-in-btn">
+                  <span>Sign In</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+
+          <form class="register-form" id="register-form">
+            <div class="form-title">
+              <span>Register</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="grid">
+                <div class="input-box">
+                  <input type="text" placeholder="First Name..." id="first-name" class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="last-name" placeholder="Last Name..." class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="email" id="email" placeholder="Email..." class="input-field" required pattern=".+@gmail\.com">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="username" placeholder="Username..." class="input-field" required minlength="6">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+              </div>
+
+              <label for="dob">Date Of Birth</label>
+              <div class="input-box">
+                <input type="date" id="dob" class="input-field" required max="2012-12-31">
+              </div>
+
+              <div class="input-box">
+                <input type="password" id="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#login">Already have an account? Login Now!</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-up-btn">
+                  <span>Register</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="shop-section">
+<!--   product (flowers) section -->
+  <section class="product-con" id="flower-pots">
+    <h1>Flower Blower</h1>
+    <p>Whether you're looking to fill your flower beds, create stunning container arrangements, or simply bring the joy of fresh blooms indoors, now's the time. We're offering unbeatable discounts on a wide variety of our most popular annuals and perennials. All our top-quality flowers are ready to be delivered directly to your door, so you can start planting and enjoying them in no time.</p>
+    
+<!--   section  icons -->
+    <section class="category-icons">
+      <a href="#garden-tools" class="category-box">
+        <span class="category-img">
+          <img src="https://i.pinimg.com/736x/ab/5d/f9/ab5df99efd0ee8ee84314c8fa0c7c70d.jpg" alt="Garden Tools">
+        </span>
+        <strong>Garden Tools</strong>
+      </a>
+      
+      <a href="#flower-pots" class="category-box">
+        <span class="category-img">
+          <img src="https://i.pinimg.com/736x/de/a9/de/dea9de005c11487cdb8b2c5cf46b9f91.jpg" alt="Flowers">
+        </span>
+        <strong>Flower Pots</strong>
+      </a>
+      
+      <a href="#fertilizers" class="category-box">
+        <span class="category-img">
+          <img src="https://i.pinimg.com/736x/ac/2d/f4/ac2df462c3b40fad4cf46149a5e1344e.jpg" alt="Fertilizers">
+        </span>
+        <strong>Fertilizers</strong>
+      </a>
+      
+      <a href="#garden-decor" class="category-box">
+        <span class="category-img">
+          <img src="https://i.pinimg.com/736x/3c/0b/49/3c0b493d744a587e969c3423afe23132.jpg" alt="Garden Decor">
+        </span>
+        <strong>Garden Decor</strong>
+      </a>
+    </section>
+    
+    <div class="products">
+      <div class="product">
+      
+      <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/09/56/b9/0956b981c846eea8e5310bcf9ab18565.jpg" alt="Flower Pot" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Surefire® White Begonia (Begonia benariensis)</h4>
+          <span class="product-price">$17.99 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/47/49/00/474900528ae246e464c4928d5c8155bf.jpg" alt="Flower Pot" class="product-img">
+        <span>Almost Out Of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Truffula™ Pink Globe Amaranth (Gomphrena pulchella)</h4>
+          <span class="product-price">$12.99 <del>$24.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/45/a2/b7/45a2b768dfb21143a89d78a15f3dbf6e.jpg" alt="Flower Pot" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Above and Beyond 6.5 Inch Combination</h4>
+          <span class="product-price">$9.99 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/32/9a/23/329a23cba5fb081a0c6c137f0886dfcf.jpg" alt="Flower Pot" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Supertunia® Pink Tiara™ Petunia (Petunia hybrid)</h4>
+          <span class="product-price">$24.99 <del>$44.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/65/65/7b/65657b44e5505f15ae920bdb52e308c7.jpg" alt="Impatiens Walleriana" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Soprano® Violet Shades Bedding Impatiens (Impatiens walleriana)</h4>
+          <span class="product-price">$15.99 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/06/45/25/064525bf22770357bc3ad9d77db96098.jpg" alt="Superbells® Coralina Calibrachoa" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Superbells® Coralina Calibrachoa</h4>
+          <span class="product-price">$19.99 <del>$54.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/68/30/b5/6830b5c1618eb3fc24d6c9f1db08ebea.jpg" alt="Pelargonium Interspecific" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Boldly® Hot Pink Geranium (Pelargonium interspecific)</h4>
+          <span class="product-price">$21.49 <del>$69.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/b1/ec/d4/b1ecd4bdd0695929f79baa01482628ff.jpg" alt="Begonia Semperflorens" class="product-img">
+        <span>Almost Out of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Double Up™ Pink - Begonia semperflorens</h4>
+          <span class="product-price">$17.49 <del>$49.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+      
+        </div>
+    </div>
+    
+  </section>
+  
+  <!--   product (fertilizer) section -->
+  <section class="product-con" id="fertilizers">
+    <h1>Fertilizers Galore</h1>
+    <p>Get your garden ready for explosive growth with our spectacular sale on fertilizers! We're making room for new inventory, which means incredible savings on all your essential plant nutrients. Imagine your plants reaching their fullest potential with our premium all-purpose fertilizers, our specialized bloom boosters for vibrant flowers, or our slow-release formulas for sustained nourishment.</p>
+    
+    <div class="products">
+      <div class="product">
+      
+      <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/1f/4e/12/1f4e12191e928464bc2c02a6ff28f92f.jpg" alt="Flower Pot" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">G & B Organics: All-Purpose Fertilizer </h4>
+          <span class="product-price">$34.99 <del>$59.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/f1/9e/70/f19e70a98c49af81b551b81899a485eb.jpg" alt="G & B Organics: Purely Compost Fertilizer" class="product-img">
+        <span>Almost Out Of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">G & B Organics: Purely Compost Fertilizer</h4>
+          <span class="product-price">$19.99 <del>$59.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/0c/00/6b/0c006bf46042ccea75501b694462dc68.jpg" alt="Fertilizer" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Kellogg Organic Fish and Kelp Fertilizer</h4>
+          <span class="product-price">$15.99 <del>$69.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/dd/69/06/dd6906f441466e4ac346de9919ed32fd.jpg" alt="Green Future Organic Tomato Fertilizer (5 Litres)" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Green Future Organic Tomato Fertilizer (5 Litres)</h4>
+          <span class="product-price">$44.99 <del>$94.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/32/32/4d/32324d1e0320d415d1662dbac1a00a59.jpg" alt="G & B Organics: Organic Lawn Fertilizer" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">G & B Organics: Organic Lawn Fertilizer</h4>
+          <span class="product-price">$19.99 <del>$69.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/a9/55/92/a95592bf0bafea285116a9c876ab7271.jpg" alt="Dr. Earth Organic Bonsai Fertilizer" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Dr. Earth Organic Bonsai Fertilizer</h4>
+          <span class="product-price">$24.99 <del>$89.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/d4/d4/e1/d4d4e134091f65637a2e00175a5a1b49.jpg" alt="Organic Plus All Purpose Fertilizer" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Kellogg Organic Plus All Purpose Fertilizer </h4>
+          <span class="product-price">$29.99 <del>$79.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/f4/d9/f6/f4d9f66c8ba6a0a5c35a274fa7ededde.jpg" alt="Organic Citrus & Fruit Tree Fertilizer" class="product-img">
+        <span>Almost Out of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">G & B Organics: Organic Citrus & Fruit Tree Fertilizer (8-4-2)</h4>
+          <span class="product-price">$22.49 <del>$59.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+      
+        </div>
+    </div>
+    
+  </section>
+  
+   <!--   product (tools) section -->
+  <section class="product-con" id="garden-tools">
+    <h1>Trowel Yourself a Deal</h1>
+    <p>This is your opportunity to expand your toolset or start over with high-quality instruments built for comfort and performance.  We're providing great prices on a comprehensive choice of high-quality garden tools suitable for all gardeners, from seasoned professionals to eager novices.  All of our durable tools are ready to be delivered right to your door, allowing you to quickly begin designing your ideal outdoor space.</p>
+    
+    <div class="products">
+      <div class="product">
+      
+      <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/85/6d/50/856d500908d1d8c4465046f35d028fdf.jpg" alt="Watering Can" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Watering Can</h4>
+          <span class="product-price">$34.99 <del>$59.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/1b/68/cc/1b68cc6c0fe06f54a5b415517eb1f0c9.jpg" alt="Trowel" class="product-img">
+        <span>Almost Out Of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Trowel</h4>
+          <span class="product-price">$9.99 <del>$29.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/b6/1c/8a/b61c8a625a73900f9aefeb47bf8cc535.jpg" alt="Spray Bottle" class="product-img">
+        <span>Hot Steal</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Spray Bottle</h4>
+          <span class="product-price">$9.99 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/cc/c1/05/ccc105c9bd1b1f6edef6e8d0289f33ab.jpg" alt="Shovel" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Shovel</h4>
+          <span class="product-price">$39.99 <del>$79.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/00/f6/38/00f638f5f94ee46e9ce01fc690e8b7a4.jpg" alt="Wheelbarrel" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Wheelbarrel</h4>
+          <span class="product-price">$59.99 <del>$129.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/1c/3b/4d/1c3b4df808df281a82db0a27a53bec25.jpg" alt="Garden Rake" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Garden Rake</h4>
+          <span class="product-price">$14.99 <del>$49.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/5b/f9/d7/5bf9d75b10af775754a04eef0e41b5f6.jpg" alt="Digging Fork" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Digging Fork</h4>
+          <span class="product-price">$95.99 <del>$109.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/b4/07/9a/b4079a8955bc1308f44cc68ad653a677.jpg" alt="Eye Hoe" class="product-img">
+        <span>Hot Deal</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Truper 33119 Tru Pro Forged Eye Hoe</h4>
+          <span class="product-price">$49.99 <del>$99.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+      
+        </div>
+    </div>
+    
+  </section>
+  
+     <!--   product (decor) section -->
+  <section class="product-con" id="garden-decor">
+    <h1>Gardening Wonderland</h1>
+    <p>Transform your outdoor refuge with our amazing Garden Decor Blowout Sale!  We're renewing our inventory, which means huge savings on beautiful things to personalize your outdoor environment.  Consider adding whimsical appeal with our beautiful garden gnomes, tranquil elegance with our soothing wind chimes, or artistic flare with our ornamental planters and statuary.</p>
+    
+    <div class="products">
+      <div class="product">
+      
+      <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/2a/c0/39/2ac039b17d5c10c13d1d276d87ed6de3.jpg" alt="6 Pieces Mini Figurines Garden Statue Miniature Figurine Model" class="product-img">
+        <span>Hot Seller</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Oshhnii 6 Pieces Mini Figurines Garden Statue Miniature Figurine Model</h4>
+          <span class="product-price">$14.99 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/da/36/0e/da360e8fedbe1c2be1f6d6acb7ac8f4f.jpg" alt="12-Inch Tall Welcome Outdoor Garden Gnome Yard Statue Decoration" class="product-img">
+        <span>Almost Out Of Stock</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Alpine Corporation 12-Inch Tall Welcome Outdoor Garden Gnome Yard Statue Decoration</h4>
+          <span class="product-price">$12.49 <del>$29.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/83/b0/da/83b0da4e60886cd3afd24992cec994eb.jpg" alt="Design Toscano 34.5-in H x 14.5-in W Off-white Children Garden Statue" class="product-img">
+        <span>Hot Steal</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Design Toscano 34.5-in H x 14.5-in W Off-white Children Garden Statue</h4>
+          <span class="product-price">$9.99 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/8a/fd/6e/8afd6e6888d9017005b88e1a660742ee.jpg" alt="2 PCS Miniature Statue, Outdoor Garden Figurines Decoration, Mini Cute Figures for Patio Yard Fairy Garden Ornaments" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">2 PCS Miniature Statue, Outdoor Garden Figurines Decoration, Mini Cute Figures for Patio Yard Fairy Garden Ornaments</h4>
+          <span class="product-price">$11.49 <del>$29.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/84/21/b6/8421b642e091d74121fd6b863aa8463e.jpg" alt="Delilah Hanging Egg Chair" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Delilah Hanging Egg Chair</h4>
+          <span class="product-price">$39.99 <del>$99.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/6b/39/c2/6b39c29c8f64858e2f7810909dccfe04.jpg" alt="4-Piece Metal Outdoor Patio Conversation Set with White Cushions for Garden, Backyard, Balcony" class="product-img">
+        <span>New</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">4-Piece Metal Outdoor Patio Conversation Set with White Cushions for Garden, Backyard, Balcony</h4>
+          <span class="product-price">$42.49 <del>$89.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/0d/60/49/0d6049e0088bddc35e4aad346a1eb6e0.jpg" alt="Outdoor Round Rug" class="product-img">
+        <span>Trending</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Green 6 x 6 Botanical Indoor / Outdoor Round Rug</h4>
+          <span class="product-price">$14.99 <del>$39.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+        
+        <div class="product-item">
+        <div class="product-img">
+          <img src="https://i.pinimg.com/736x/d4/0a/17/d40a17b7154618dcbafc20f6023821d2.jpg" alt="Westcharm Large 18/"" Dia. Outdoor Round Planter with 3-Head LED Solar Lamp Post Lights - Black" class="product-img">
+        <span>Hot Deal</span>
+          </div>
+        
+        <div class="product-desc">
+          <h4 class="product-title">Westcharm Large 18-Inch Dia. Outdoor Round Planter with 3-Head LED Solar Lamp Post Lights - Black</h4>
+          <span class="product-price">$24.99 <del>$59.99</del></span>
+          <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
+            <ion-icon name="basket-outline"></ion-icon>
+              Add to Cart
+            </button>
+        </div>
+        
+      </div>
+      
+        </div>
+    </div>
+    
+  </section>
+  
+<!--   cart section -->
+  <div class="cart-list" id="cart-list">
+    <div class="cart-head">
+      <h2>Cart</h2>
+      <button class="close-btn"><ion-icon name="close-outline"></ion-icon></button>
+    </div>
+    
+<!--     cart added items -->
+    <div class="items-list">
+      <ul id="cart-items">
+
+      </ul>
+    </div>
+    
+    <div class="cart-total">Sub Total: $<span id="total-price">0.00</span> </div>
+    
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Check Out</button>
+  </div>
+  
+  </main>
+    <!--   footer section -->
+  <footer>
+    <ul class="footer-icons">
+      <li><a href="https://www.instagram.com/flowjamaica/" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+      <li><a href="https://www.facebook.com/FlowJamaica/" target="_blank">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li><a href="https://x.com/FLOWJamaica?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a></li>
+    </ul>
+
+    <ul class="footer-menu">
+      <li>
+        <a href="index.html" class="navbar-link has-after">Home</a>
+      </li>
+
+      <li>
+        <a href="shop.html" class="navbar-link has-after">Shop</a>
+      </li>
+
+      <li>
+        <a href="about.html" class="navbar-link has-after">About Us</a>
+      </li>
+    </ul>
+
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2025 | Designed by Jada Johnson | All Rights Reserved</p>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+</body>
+</html>

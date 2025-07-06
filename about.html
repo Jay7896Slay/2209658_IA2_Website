@@ -1,0 +1,438 @@
+<!-- Jada Johnson, 2209658, CIT2011, 19/6/2025 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/Assets/logo.jpg">
+
+  <title>Florescence: Life Blooms Here</title>
+</head>
+<body>
+  
+<!--   header section -->
+  <header class="header">
+    <div class="alert">
+      <div class="container">
+        <p class="alert-text">Free Shipping On All U.S. Orders $50+</p>
+      </div>
+    </div>
+
+    <div class="header-top">
+      <button class="main-btn acc-btn" id="openModalBtn">
+        Login / Sign Up
+      </button>
+      
+      <a href="#" class="logo">
+        Florescence
+      </a>
+      
+      <div class="header-actions">
+        <button class="header-action-btn user hideOnMobile have-acc" aria-label="user">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <button class="header-action-btn fav hideOnMobile" aria-label="favourite item">
+          <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+          <span class="btn-badge">0</span>
+        </button>
+
+        <button class="header-action-btn cart hideOnMobile" aria-label="cart item">
+          <ion-icon name="basket-outline"></ion-icon>
+          <span class="btn-badge" id="cart-count">0</span>
+        </button>
+
+        <button class="header-action-btn menu" aria-label="menu item" onclick="showSidebar()">
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <nav class="navbar hideOnMobile">
+      <ul class="navbar-list">
+        <li>
+          <a href="index.html" class="navbar-link">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link">About Us</a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="sidebar">
+      <ul class="navbar-list">
+        <li onclick="hideSidebar()">
+          <ion-icon name="close-outline"></ion-icon>
+        </li>
+        <li>
+          <a href="index.html" class="navbar-link">Home</a>
+        </li>
+        <li>
+          <a href="shop.html" class="navbar-link">Shop</a>
+        </li>
+        <li>
+          <a href="about.html" class="navbar-link">About Us</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link">My Cart</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link">My Profile</a>
+        </li>
+        <li>
+          <a class="navbar-link" id="openModalBtn">Login / Sign Up</a>
+        </li>
+        <li>
+          <a href="#" class="navbar-link">Favourites</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="toastBox">
+      
+    </div>
+
+    <!--   login/register forms -->
+  <div id="loginRegisterModal" class="modal">
+    <div class="modal-content">
+      <div class="form-con">
+        <ion-icon name="close-outline" class="form-cancel"></ion-icon>
+        
+        <div class="col col-1">
+          <div class="image-layer">
+            <img src="/Assets/logo.jpg" alt="Florescence Logo" class="form-img">
+          </div>
+          <p class="feat-words">A plethora of deals awaits you </p>
+        </div>
+
+        <div class="col col-2">
+          <div class="btn-box">
+            <button class="btn btn-1" id="login">
+              Sign In
+            </button>
+
+            <button class="btn btn-2" id="register">
+              Sign Up
+            </button>
+          </div>
+
+          <form class="login-form" id="login-form">
+            <div class="form-title">
+              <span>Sign In</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="input-box">
+                <input type="text" placeholder="Username..." class="input-field" required minlength="6">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+
+              <div class="input-box">
+                <input type="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#">Forgot Password?</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-in-btn">
+                  <span>Sign In</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+
+          <form class="register-form" id="register-form">
+            <div class="form-title">
+              <span>Register</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="grid">
+                <div class="input-box">
+                  <input type="text" placeholder="First Name..." id="first-name" class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="last-name" placeholder="Last Name..." class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="email" id="email" placeholder="Email..." class="input-field" required pattern=".+@gmail\.com">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="username" placeholder="Username..." class="input-field" required minlength="6">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+              </div>
+
+              <label for="dob">Date Of Birth</label>
+              <div class="input-box">
+                <input type="date" id="dob" class="input-field" required max="2012-12-31">
+              </div>
+
+              <div class="input-box">
+                <input type="password" id="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#login">Already have an account? Login Now!</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-up-btn">
+                  <span>Register</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!--   about hero section -->
+  <section class="about-cont">
+    
+      <div class="img-con">
+            <div class="image-wrapper image-1">
+            <img src="/Assets/contact-img-5.jpg" alt="Image 1">
+        </div>
+          
+            <div class="image-wrapper image-2">
+            <img src="/Assets/contact-img-6.jpg" alt="Image 2">
+        </div>
+          
+            <div class="image-wrapper image-3">
+            <img src="/Assets/contact-img-7.jpg" alt="Gary, One of our Many dedicated Truckers">
+        </div>
+        
+            <div class="experience-section">
+              <h2 class="experience-number">25+</h2>
+              <p class="experience-text">Years<br>Experience</p>
+            </div>
+          
+      </div>
+    
+    <div class="all-text">
+      <h4>About Us</h4>
+      <h1>Our Story</h1>
+      <p>Florescence grew into an e-commerce powerhouse, changing the way people interact with nature. Our success is built on a continuous dedication to producing high-quality items. From vivid annuals to durable gardening tools, every item supplied from our online store exceeded the highest quality requirements, ensuring plants thrived and tools endured. This effort resulted in high client satisfaction. Reviews repeatedly applauded not only the items, but also Florescence's attentive customer service and quick delivery, establishing a dedicated community of satisfied gardeners. Our company did more than just sell plants; it fueled a rising passion for gardening, leaving an indelible effect on countless homes and yards.</p>
+      <div class="about-btns">
+        <button>Our Team</button>
+        <button class="btn-shadow">Learn More</button>
+      </div>
+    </div>
+    
+  </section>
+  
+<!--   about details section -->
+  <section class="about-details-con">
+    <div class="card-con">
+      
+      <article class="card-art">
+        <img src="/Assets/contact-img-4.jpg" alt="Someone digging the ground" class="card-img">
+        
+        <div class="card-data">
+          <span class="card-desc">
+            Florescence's impact blossomed, forever shaping landscapes.
+          </span>
+          <h2 class="card-title">Everlasting Impact</h2>
+          <a href="#" class="card-btn">Read More</a>
+        </div>
+      </article>
+      
+      <article class="card-art">
+        <img src="/Assets/contact-img-3.jpg" alt="Garden Tools" class="card-img">
+        
+        <div class="card-data">
+          <span class="card-desc">
+            Quality garden products cultivate customer satisfaction, blooming lasting joy.
+          </span>
+          <h2 class="card-title">Quality Products</h2>
+          <a href="#" class="card-btn">Read More</a>
+        </div>
+      </article>
+      
+      <article class="card-art">
+        <img src="/Assets/contact-img-2.jpg" alt="Happy Customer" class="card-img">
+        
+        <div class="card-data">
+          <span class="card-desc">
+            Happy customers grew, nurturing Florescence's success.
+          </span>
+          <h2 class="card-title">Happy Customers</h2>
+          <a href="#" class="card-btn">Read More</a>
+        </div>
+      </article>
+      
+    </div>
+  </section>
+  
+<!--   about contact section -->
+  <section class="contact-section">
+    <div class="contact-bg">
+      <h3>Get in Touch</h3>
+      <h2>Contact Us</h2>
+      <div class="line">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam veniam inventore earum reiciendis enim accusamus excepturi consectetur, eos, tenetur numquam expedita ea dicta, eius temporibus ut possimus voluptatibus! Et, quo.
+      </p>
+    </div>
+    
+    <div class="contact-body">
+      <div class="contact-info">
+<!--         phone -->
+        <div>
+          <span><ion-icon name="call-outline"></ion-icon></span>
+            <span>Phone No.</span>
+          <span class="text">1-876-927-1680</span>
+        </div>
+<!--         address -->
+        <div>
+          <span><ion-icon name="compass-outline"></ion-icon></span>
+            <span>Address</span>
+          <span class="text">237 Old Hope Road, Kingston</span>
+        </div>
+<!--         email -->
+        <div>
+          <span><ion-icon name="mail-unread-outline"></ion-icon></span>
+            <span>Email Us</span>
+          <span class="text"><a href="mailto:2209658@utech.edu.jm&subject=Message&body=Dear%20Sir/Madam,">2209658@utech.edu.jm</a></span>
+        </div>
+<!--        work hours -->
+        <div>
+          <span><ion-icon name="hourglass-outline"></ion-icon></span>
+            <span>Opening Hours</span>
+          <span class="text">Mondays - Saturdays (10:00 AM to 8:00 PM)</span>
+        </div>
+        
+      </div>
+      
+      <div class="contact-form">
+        <form action="#">
+          <div>
+            <input type="text" class="form-control" name="FName" placeholder="First Name...">
+            <input type="text" class="form-control" name="FName" placeholder="Last Name...">
+            </div>
+          
+            <div>
+              <input type="email" class="form-control" name="Email" placeholder="Email Address...">
+              <input type="tel" class="form-control" name="Phone" placeholder="Phone Number...">
+            </div>
+          
+            <textarea name="Message" cols="30" rows="5" class="form-control" placeholder="Message..."></textarea>
+          <input type="submit" class="form-control form-control-btn" name="Submit Button" value="Send Message...">
+        </form>
+        
+        <div>
+          <img src="/Assets/contact-img-1.jpg" alt="Contact Us">
+        </div>
+      </div>
+    </div>
+    
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3794.151391825817!2d-76.7435785!3d18.018176399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8edb3ed77252d65f%3A0xbe483695dda08fef!2sUniversity%20of%20Technology%2C%20Jamaica!5e0!3m2!1sen!2sjm!4v1750623829378!5m2!1sen!2sjm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
+  </section>
+
+  <!--   cart section -->
+  <div class="cart-list" id="cart-list">
+    <div class="cart-head">
+      <h2>Cart</h2>
+      <button class="close-btn"><ion-icon name="close-outline"></ion-icon></button>
+    </div>
+    
+<!--     cart added items -->
+    <div class="items-list">
+      <ul id="cart-items">
+
+      </ul>
+    </div>
+    
+    <div class="cart-total">Sub Total: $<span id="total-price">0.00</span> </div>
+    
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Check Out</button>
+  </div>
+  
+<!--   footer section -->
+  <footer>
+    <ul class="footer-icons">
+      <li><a href="https://www.instagram.com/flowjamaica/" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+      <li><a href="https://www.facebook.com/FlowJamaica/" target="_blank">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li><a href="https://x.com/FLOWJamaica?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li><a href="https://www.linkedin.com/company/flow-caribbean" target="_blank">
+          <ion-icon name="logo-tiktok"></ion-icon>
+        </a></li>
+    </ul>
+
+    <ul class="footer-menu">
+      <li>
+        <a href="index.html" class="navbar-link has-after">Home</a>
+      </li>
+
+      <li>
+        <a href="shop.html" class="navbar-link has-after">Shop</a>
+      </li>
+
+      <li>
+        <a href="about.html" class="navbar-link has-after">About Us</a>
+      </li>
+    </ul>
+
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2025 | Designed by Jada Johnson | All Rights Reserved</p>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+</body>
+</html>
