@@ -564,7 +564,7 @@ iframe {
 }
 
 .hero {
-  background-image: url(/Assets/bg-img-1.jpg);
+  background-image: url(bg-img-1.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -731,7 +731,7 @@ p {
 .sale-con {
   padding-block: 5rem;
   text-align: center;
-  background-image: url(/Assets/bg-img-2.jpg);
+  background-image: url(bg-img-2.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
