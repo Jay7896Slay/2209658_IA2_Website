@@ -9,12 +9,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <!-- favicon -->
-  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg">
+  <link rel="icon" type="image/x-icon" href="logo.jpg">
 
   <title>Florescence: Life Blooms Here</title>
 </head>
 
 <body>
+
+  <div id="toastBox">
+      
+    </div>
+
+    <!-- logout con -->
+  <article class="modal-con" id="log-out">
+    <div class="content">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <div class="confirmation-message">
+        <h2>Log Out Confirmation</h2>
+        <p>So sad to see you go... Are you sure you want to log out?</p>
+        <div class="modal-btns">
+          <button class="modal-btn-yes" id="confirmLogoutBtn">Yes</button>
+          <button class="modal-btn-no" id="cancelLogoutBtn">No</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="main-con" id="blur">
   <!--   header section -->
   <header class="header">
 
@@ -98,10 +119,6 @@
     </nav>
   </header>
 
-  <div id="toastBox">
-      
-    </div>
-
     <!--   login/register forms -->
   <div id="loginRegisterModal" class="modal">
     <div class="modal-content">
@@ -110,7 +127,7 @@
         
         <div class="col col-1">
           <div class="image-layer">
-            <img src="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg" alt="Florescence Logo" class="form-img">
+            <img src="logo.jpg" alt="Florescence Logo" class="form-img">
           </div>
           <p class="feat-words">A plethora of deals awaits you </p>
         </div>
@@ -234,40 +251,41 @@
     <section class="category-icons">
       <a href="#garden-tools" class="category-box">
         <span class="category-img">
-          <img src="https://i.pinimg.com/736x/ab/5d/f9/ab5df99efd0ee8ee84314c8fa0c7c70d.jpg" alt="Garden Tools">
+          <img src="cat-icon-img-1.jpg" alt="Garden Tools Icon">
         </span>
         <strong>Garden Tools</strong>
       </a>
       
       <a href="#flower-pots" class="category-box">
         <span class="category-img">
-          <img src="https://i.pinimg.com/736x/de/a9/de/dea9de005c11487cdb8b2c5cf46b9f91.jpg" alt="Flowers">
+          <img src="cat-icon-img-2.jpg" alt="Flowers Icon">
         </span>
-        <strong>Flower Pots</strong>
+        <strong>Flowers</strong>
       </a>
       
       <a href="#fertilizers" class="category-box">
         <span class="category-img">
-          <img src="https://i.pinimg.com/736x/ac/2d/f4/ac2df462c3b40fad4cf46149a5e1344e.jpg" alt="Fertilizers">
+          <img src="cat-icon-img-3.jpg" alt="Fertilizers Icon">
         </span>
         <strong>Fertilizers</strong>
       </a>
       
       <a href="#garden-decor" class="category-box">
         <span class="category-img">
-          <img src="https://i.pinimg.com/736x/3c/0b/49/3c0b493d744a587e969c3423afe23132.jpg" alt="Garden Decor">
+          <img src="cat-icon-img-4.jpg" alt="Garden Decor Icon">
         </span>
         <strong>Garden Decor</strong>
       </a>
     </section>
     
+      <!--   product (flowers) section -->
     <div class="products">
       <div class="product">
       
       <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/09/56/b9/0956b981c846eea8e5310bcf9ab18565.jpg" alt="Flower Pot" class="product-img">
-        <span>New</span>
+          <img src="begonia-benariensis.jpg" alt="Flower Pot" class="product-img">
+          <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -283,8 +301,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/47/49/00/474900528ae246e464c4928d5c8155bf.jpg" alt="Flower Pot" class="product-img">
-        <span>Almost Out Of Stock</span>
+          <img src="gomphrena-pulchella.jpg" alt="Flower Pot" class="product-img">
+        <span class="limited-item">Almost Out Of Stock</span>
           </div>
         
         <div class="product-desc">
@@ -300,8 +318,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/45/a2/b7/45a2b768dfb21143a89d78a15f3dbf6e.jpg" alt="Flower Pot" class="product-img">
-        <span>Trending</span>
+          <img src="6.5-inch-combination.jpg" alt="Flower Pot" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -317,12 +335,12 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/32/9a/23/329a23cba5fb081a0c6c137f0886dfcf.jpg" alt="Flower Pot" class="product-img">
+          <img src="petunia-hybrid.jpg" alt="Flower Pot" class="product-img">
         <span>New</span>
           </div>
         
         <div class="product-desc">
-          <h4 class="product-title">Supertunia® Pink Tiara™ Petunia (Petunia hybrid)</h4>
+          <h4 class="product-title">Supertunia® Pink Tiara™ Petunia (Petunia Hybrid)</h4>
           <span class="product-price">$24.99 <del>$44.99</del></span>
           <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
             <ion-icon name="basket-outline"></ion-icon>
@@ -334,12 +352,12 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/65/65/7b/65657b44e5505f15ae920bdb52e308c7.jpg" alt="Impatiens Walleriana" class="product-img">
-        <span>Trending</span>
+          <img src="impatiens-walleriana-2.jpg" alt="Impatiens Walleriana" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
-          <h4 class="product-title">Soprano® Violet Shades Bedding Impatiens (Impatiens walleriana)</h4>
+          <h4 class="product-title">Soprano® Violet Shades Bedding Impatiens (Impatiens Walleriana)</h4>
           <span class="product-price">$15.99 <del>$39.99</del></span>
           <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
             <ion-icon name="basket-outline"></ion-icon>
@@ -351,8 +369,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/06/45/25/064525bf22770357bc3ad9d77db96098.jpg" alt="Superbells® Coralina Calibrachoa" class="product-img">
-        <span>New</span>
+          <img src="coralina-calibrachoa-2.jpg" alt="Superbells® Coralina Calibrachoa" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -368,12 +386,12 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/68/30/b5/6830b5c1618eb3fc24d6c9f1db08ebea.jpg" alt="Pelargonium Interspecific" class="product-img">
-        <span>Trending</span>
+          <img src="pelargonium-interspecific-2.jpg" alt="Pelargonium Interspecific" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
-          <h4 class="product-title">Boldly® Hot Pink Geranium (Pelargonium interspecific)</h4>
+          <h4 class="product-title">Boldly® Hot Pink Geranium (Pelargonium Interspecific)</h4>
           <span class="product-price">$21.49 <del>$69.99</del></span>
           <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
             <ion-icon name="basket-outline"></ion-icon>
@@ -385,12 +403,12 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/b1/ec/d4/b1ecd4bdd0695929f79baa01482628ff.jpg" alt="Begonia Semperflorens" class="product-img">
-        <span>Almost Out of Stock</span>
+          <img src="begonia-semperflorens-2.jpg" alt="Begonia Semperflorens" class="product-img">
+        <span class="limited-item">Almost Out of Stock</span>
           </div>
         
         <div class="product-desc">
-          <h4 class="product-title">Double Up™ Pink - Begonia semperflorens</h4>
+          <h4 class="product-title">Double Up™ Pink - Begonia Semperflorens</h4>
           <span class="product-price">$17.49 <del>$49.99</del></span>
           <button class="product-btn" onclick="addToCart(this.parentElement.parentElement)">
             <ion-icon name="basket-outline"></ion-icon>
@@ -415,8 +433,8 @@
       
       <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/1f/4e/12/1f4e12191e928464bc2c02a6ff28f92f.jpg" alt="Flower Pot" class="product-img">
-        <span>New</span>
+          <img src="all-purpose-fertilizer-1.jpg" alt="Flower Pot" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -431,10 +449,11 @@
       </div>
         
         <div class="product-item">
+
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/f1/9e/70/f19e70a98c49af81b551b81899a485eb.jpg" alt="G & B Organics: Purely Compost Fertilizer" class="product-img">
-        <span>Almost Out Of Stock</span>
-          </div>
+          <img src="purely-compost-fertilizer.jpg" alt="G & B Organics: Purely Compost Fertilizer" class="product-img">
+          <span class="limited-item">Almost Out Of Stock</span>
+        </div>
         
         <div class="product-desc">
           <h4 class="product-title">G & B Organics: Purely Compost Fertilizer</h4>
@@ -449,8 +468,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/0c/00/6b/0c006bf46042ccea75501b694462dc68.jpg" alt="Fertilizer" class="product-img">
-        <span>Trending</span>
+          <img src="fish-and-kelp-fertilizer.jpg" alt="Fertilizer" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -466,8 +485,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/dd/69/06/dd6906f441466e4ac346de9919ed32fd.jpg" alt="Green Future Organic Tomato Fertilizer (5 Litres)" class="product-img">
-        <span>New</span>
+          <img src="tomato-fertilizer.jpg" alt="Green Future Organic Tomato Fertilizer (5 Litres)" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -483,8 +502,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/32/32/4d/32324d1e0320d415d1662dbac1a00a59.jpg" alt="G & B Organics: Organic Lawn Fertilizer" class="product-img">
-        <span>Trending</span>
+          <img src="organic-lawn-fertilizer.jpg" alt="G & B Organics: Organic Lawn Fertilizer" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -500,8 +519,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/a9/55/92/a95592bf0bafea285116a9c876ab7271.jpg" alt="Dr. Earth Organic Bonsai Fertilizer" class="product-img">
-        <span>New</span>
+          <img src="organic-bonsai-fertilizer.jpg" alt="Dr. Earth Organic Bonsai Fertilizer" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -517,8 +536,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/d4/d4/e1/d4d4e134091f65637a2e00175a5a1b49.jpg" alt="Organic Plus All Purpose Fertilizer" class="product-img">
-        <span>Trending</span>
+          <img src="all-purpose-fertilizer-2.jpg" alt="Organic Plus All Purpose Fertilizer" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -534,8 +553,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/f4/d9/f6/f4d9f66c8ba6a0a5c35a274fa7ededde.jpg" alt="Organic Citrus & Fruit Tree Fertilizer" class="product-img">
-        <span>Almost Out of Stock</span>
+          <img src="fruit-tree-fertilizer.jpg" alt="Organic Citrus & Fruit Tree Fertilizer" class="product-img">
+        <span class="limited-item">Almost Out of Stock</span>
           </div>
         
         <div class="product-desc">
@@ -564,8 +583,8 @@
       
       <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/85/6d/50/856d500908d1d8c4465046f35d028fdf.jpg" alt="Watering Can" class="product-img">
-        <span>New</span>
+          <img src="watering-can.jpg" alt="Watering Can" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -581,8 +600,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/1b/68/cc/1b68cc6c0fe06f54a5b415517eb1f0c9.jpg" alt="Trowel" class="product-img">
-        <span>Almost Out Of Stock</span>
+          <img src="trowel.jpg" alt="Trowel" class="product-img">
+        <span class="limited-item">Almost Out Of Stock</span>
           </div>
         
         <div class="product-desc">
@@ -598,7 +617,7 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/b6/1c/8a/b61c8a625a73900f9aefeb47bf8cc535.jpg" alt="Spray Bottle" class="product-img">
+          <img src="spray-bottle.jpg" alt="Spray Bottle" class="product-img">
         <span>Hot Steal</span>
           </div>
         
@@ -615,8 +634,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/cc/c1/05/ccc105c9bd1b1f6edef6e8d0289f33ab.jpg" alt="Shovel" class="product-img">
-        <span>New</span>
+          <img src="shovel.jpg" alt="Shovel" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -632,8 +651,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/00/f6/38/00f638f5f94ee46e9ce01fc690e8b7a4.jpg" alt="Wheelbarrel" class="product-img">
-        <span>Trending</span>
+          <img src="wheelbarrel.jpg" alt="Wheelbarrel" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -649,8 +668,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/1c/3b/4d/1c3b4df808df281a82db0a27a53bec25.jpg" alt="Garden Rake" class="product-img">
-        <span>New</span>
+          <img src="garden-rake.jpg" alt="Garden Rake" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -666,8 +685,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/5b/f9/d7/5bf9d75b10af775754a04eef0e41b5f6.jpg" alt="Digging Fork" class="product-img">
-        <span>Trending</span>
+          <img src="digging-fork.jpg" alt="Digging Fork" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -683,8 +702,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/b4/07/9a/b4079a8955bc1308f44cc68ad653a677.jpg" alt="Eye Hoe" class="product-img">
-        <span>Hot Deal</span>
+          <img src="forged-eye-hoe.jpg" alt="Eye Hoe" class="product-img">
+        <span class="hot-seller-item">Hot Deal</span>
           </div>
         
         <div class="product-desc">
@@ -713,7 +732,7 @@
       
       <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/2a/c0/39/2ac039b17d5c10c13d1d276d87ed6de3.jpg" alt="6 Pieces Mini Figurines Garden Statue Miniature Figurine Model" class="product-img">
+          <img src="6-pcs-mini-figurines.jpg" alt="6 Pieces Mini Figurines Garden Statue Miniature Figurine Model" class="product-img">
         <span>Hot Seller</span>
           </div>
         
@@ -730,8 +749,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/da/36/0e/da360e8fedbe1c2be1f6d6acb7ac8f4f.jpg" alt="12-Inch Tall Welcome Outdoor Garden Gnome Yard Statue Decoration" class="product-img">
-        <span>Almost Out Of Stock</span>
+          <img src="garden-gnome.jpg" alt="12-Inch Tall Welcome Outdoor Garden Gnome Yard Statue Decoration" class="product-img">
+        <span class="limited-item">Almost Out Of Stock</span>
           </div>
         
         <div class="product-desc">
@@ -747,7 +766,7 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/83/b0/da/83b0da4e60886cd3afd24992cec994eb.jpg" alt="Design Toscano 34.5-in H x 14.5-in W Off-white Children Garden Statue" class="product-img">
+          <img src="children-garden-statue.jpg" alt="Design Toscano 34.5-in H x 14.5-in W Off-white Children Garden Statue" class="product-img">
         <span>Hot Steal</span>
           </div>
         
@@ -764,8 +783,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/8a/fd/6e/8afd6e6888d9017005b88e1a660742ee.jpg" alt="2 PCS Miniature Statue, Outdoor Garden Figurines Decoration, Mini Cute Figures for Patio Yard Fairy Garden Ornaments" class="product-img">
-        <span>New</span>
+          <img src="2-pcs-miniature-statue.jpg" alt="2 PCS Miniature Statue, Outdoor Garden Figurines Decoration, Mini Cute Figures for Patio Yard Fairy Garden Ornaments" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -781,8 +800,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/84/21/b6/8421b642e091d74121fd6b863aa8463e.jpg" alt="Delilah Hanging Egg Chair" class="product-img">
-        <span>Trending</span>
+          <img src="hanging-egg-chair.jpg" alt="Delilah Hanging Egg Chair" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -798,8 +817,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/6b/39/c2/6b39c29c8f64858e2f7810909dccfe04.jpg" alt="4-Piece Metal Outdoor Patio Conversation Set with White Cushions for Garden, Backyard, Balcony" class="product-img">
-        <span>New</span>
+          <img src="4-pcs-metal-outdoor-patio.jpg" alt="4-Piece Metal Outdoor Patio Conversation Set with White Cushions for Garden, Backyard, Balcony" class="product-img">
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -815,8 +834,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/0d/60/49/0d6049e0088bddc35e4aad346a1eb6e0.jpg" alt="Outdoor Round Rug" class="product-img">
-        <span>Trending</span>
+          <img src="round-rug.jpg" alt="Outdoor Round Rug" class="product-img">
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -832,8 +851,8 @@
         
         <div class="product-item">
         <div class="product-img">
-          <img src="https://i.pinimg.com/736x/d4/0a/17/d40a17b7154618dcbafc20f6023821d2.jpg" alt="Westcharm Large 18/"" Dia. Outdoor Round Planter with 3-Head LED Solar Lamp Post Lights - Black" class="product-img">
-        <span>Hot Deal</span>
+          <img src="solar-lamp-post.jpg" alt="Westcharm Large 18 Dia. Outdoor Round Planter with 3-Head LED Solar Lamp Post Lights - Black" class="product-img">
+          <span class="hot-seller-item">Hot Deal</span>
           </div>
         
         <div class="product-desc">
@@ -910,6 +929,7 @@
       <p>Copyright &copy; 2025 | Designed by Jada Johnson | All Rights Reserved</p>
     </div>
   </footer>
+  </div>
   
   <script src="script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
