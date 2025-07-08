@@ -6,7 +6,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  text-decoration: none;
   font-family: "Poppins";
   text-decoration: none;
   list-style: none;
@@ -233,7 +232,7 @@ iframe {
 .modal {
   display: flex;
   position: fixed;
-  z-index: 1000;
+  z-index: 10000;
   left: 0;
   top: 0;
   width: 100%;
@@ -564,7 +563,7 @@ iframe {
 }
 
 .hero {
-  background-image: url(bg-img-1.jpg);
+  background-image: url(/Assets/bg-img-1.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -731,7 +730,7 @@ p {
 .sale-con {
   padding-block: 5rem;
   text-align: center;
-  background-image: url(bg-img-2.jpg);
+  background-image: url(/Assets/bg-img-2.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1800,6 +1799,10 @@ p {
   #PURCHASE POP-UP
 \*-----------------------------------*/
 
+#clear-btn {
+  z-index: 10;
+}
+
 .main-con {
   position: relative;
   transition: filter 0.35s ease;
@@ -1830,7 +1833,7 @@ p {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.35s ease, opacity 0.35s ease, top 0.35s ease;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .modal-con.active {
@@ -1910,7 +1913,7 @@ p {
 
 .content .purchase-confirmed {
   opacity: 1;
-  transform: translateX(-150%);
+  transform: translateX(150%);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -2365,7 +2368,7 @@ p {
   flex-direction: column;
   overflow: hidden;
   padding: 20px;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 .toast {
@@ -2416,19 +2419,19 @@ p {
 }
 
 .toast.error ion-icon {
-  color: #FBA211;
+  background-color: #FBA211;
 }
 
 .toast.invalid ion-icon {
-  color: #7C1235;
+  background-color: #7C1235;
 }
 
 .toast.error {
-  color: #f46c06;
+  background-color: #f46c06;
 }
 
 .toast.invalid {
-  color: #DB1E48;
+  background-color: #DB1E48;
 }
 
 .toast::after {
