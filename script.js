@@ -4,25 +4,28 @@ let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 let total = 0;
 let itemCount = 0;
 
-// --- Toast Messages Variables ---
 const toastSuccessMsg = '<ion-icon name="checkmark-circle"></ion-icon> SYSTEM: <span></span>';
-const toastErrorMsg = '<ion-icon name="warning"></ion-icon> ERROR: <span></span>';
+const toastErrorMsg = '<ion-icon name="warning"></ion-icon> <p> ERROR: <span></span> </p>';
 const toastInvalidMsg = '<ion-icon name="close-circle"></ion-icon> INVALID: <span></span>';
 
-// --- Helper Function (Toast messages) ---
+let signedInUser = false;
+
+// --- Toast messages Function ---
 function showToast(msgType, newText) {
     const toastBox = document.getElementById('toastBox');
+
     if (!toastBox) {
         console.warn("Toast Box element not found. Toast messages will not be displayed.");
-        return;
     }
 
     let toast = document.createElement('div');
     toast.classList.add('toast');
     toast.innerHTML = msgType;
+
     toastBox.appendChild(toast);
 
     let messageSpan = toast.querySelector('span');
+
     if (messageSpan && newText) {
         messageSpan.innerText = newText;
     }
@@ -39,10 +42,9 @@ function showToast(msgType, newText) {
         toast.style.animation = 'fadeOut .3s ease forwards';
         setTimeout(() => {
             toast.remove();
-        }, 5000); // Corrected to 5000ms for total duration, not animation duration
-    }, 4700); // Start fadeOut before total duration ends
+        }, 5000);
+    }, 4700);
 }
-
 
 // --- Cart Management Functions ---
 function addToCart(productCard) {
@@ -55,7 +57,6 @@ function addToCart(productCard) {
 
     if (existingItem) {
         existingItem.quantity += 1;
-        showToast(toastSuccessMsg, `Increased quantity of ${productName}`);
     } else {
         cartItems.push({
             productName: productName,
@@ -64,7 +65,6 @@ function addToCart(productCard) {
             quantity: 1,
             image: imgSrc,
         });
-        showToast(toastSuccessMsg, `${productName} added to cart`);
     }
 
     updateLocalStorage();
@@ -139,7 +139,6 @@ function changeQuantity(productName, delta) {
         } else {
             updateLocalStorage();
             displayCart();
-            showToast(toastSuccessMsg, `Quantity of ${productName} changed to ${itemToUpdate.quantity}`);
         }
     }
 }
@@ -149,9 +148,7 @@ function removeCartItem(productName) {
     updateLocalStorage();
     displayCart();
     addCartToCheckout();
-    showToast(toastErrorMsg, `${productName} removed from cart`);
 }
-
 
 // --- Cart Sidebar Event Listeners ---
 const cartIcon = document.querySelector(".cart");
@@ -169,7 +166,6 @@ if (closeCartButton) {
         if (cartSidebar) cartSidebar.classList.remove("open-cart");
     });
 }
-
 
 // --- Checkout Page Functions ---
 function validInputs() {
@@ -286,19 +282,6 @@ if (clearFormButton) {
     });
 }
 
-if (purchaseButton) {
-    purchaseButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (cartItems.length === 0) {
-            showToast(toastErrorMsg, "Can't purchase an empty cart!");
-        } else if (validInputs()) {
-            togglePurchaseModal();
-        } else {
-            showToast(toastErrorMsg, "Please fix the form errors before proceeding.");
-        }
-    });
-}
-
 function checkCart() {
     addCartToCheckout();
 }
@@ -351,7 +334,7 @@ function addCartToCheckout() {
         const newP = document.createElement("div");
         newP.classList.add("empty-cart-message");
         newP.innerHTML = `
-            <img src="https://i.pinimg.com/736x/65/2b/1d/652b1d4c0af96bca477945270a12c169.jpg" alt="Empty Cart">
+            <img src="/Assets/empty-cart.jpg" alt="Empty Cart">
             <p class="empty-cart-text">Phew... Must have been the wind...</p>`;
 
         if (checkOutCartHTML) {
@@ -412,7 +395,6 @@ function changeCheckoutQuantity(productName, delta) {
             updateLocalStorage();
             addCartToCheckout();
             displayCart();
-            showToast(toastSuccessMsg, `Quantity of ${productName} on checkout changed to ${cartItems[productIndex].quantity}`);
         }
     }
 }
@@ -493,10 +475,10 @@ function populateInvoice(storedUsername) {
         if (customerZIPCode) customerZIPCode.innerHTML = zipCode || "00000";
         if (customerCountry) customerCountry.innerHTML = country || "N/A";
     } else {
-        if (customerName) customerName.textContent = "N/A";
-        if (customerAddress) customerAddress.textContent = "N/A";
-        if (customerZIPCode) customerZIPCode.textContent = "00000";
-        if (customerCountry) customerCountry.textContent = "N/A";
+        if (customerName) customerName.textContent = "No Name";
+        if (customerAddress) customerAddress.textContent = "No Address";
+        if (customerZIPCode) customerZIPCode.textContent = "No ZIP";
+        if (customerCountry) customerCountry.textContent = "No Country";
     }
 }
 
@@ -551,7 +533,6 @@ function updateInvoiceDetails() {
         invoiceItemsBody.appendChild(row);
     });
 
-    // --- IMPORTANT FIX: Calculate summary values AFTER the loop ---
     const taxRate = 0.165; // 16.5% tax
     const taxAmount = subtotalAmount * taxRate;
 
@@ -564,18 +545,16 @@ function updateInvoiceDetails() {
     const totalBill = subtotalAmount + taxAmount + shippingCost;
 
     // --- Update the summary details at the bottom of the invoice ---
-    // Ensure these IDs exist in your invoice HTML summary section
     const invoiceTotalItemsElement = document.getElementById("invoice-items");
     const invoiceSubtotalElement = document.getElementById("invoice-subtotal");
     const invoiceTaxElement = document.getElementById("invoice-tax");
     const invoiceShippingElement = document.getElementById("invoice-shipping");
     const invoiceGrandTotalElement = document.getElementById("invoice-total");
 
-
     if (invoiceTotalItemsElement) {
         invoiceTotalItemsElement.textContent = totalItemsCount;
     } else {
-        console.warn("Element with ID 'invoice-total-items' not found for invoice summary.");
+        console.warn("Element with ID 'invoice-items' not found for invoice summary.");
     }
 
     if (invoiceSubtotalElement) {
@@ -599,7 +578,7 @@ function updateInvoiceDetails() {
     if (invoiceGrandTotalElement) {
         invoiceGrandTotalElement.textContent = `$${totalBill.toFixed(2)}`;
     } else {
-        console.warn("Element with ID 'invoice-grand-total' not found for invoice summary.");
+        console.warn("Element with ID 'invoice-total' not found for invoice summary.");
     }
 }
 
@@ -618,7 +597,7 @@ function togglePurchaseModal() {
     }
 
     if (orderModal) {
-        orderModal.style.transform = "translateX(-150%)";
+        orderModal.style.transform = "translateX(150%)";
         orderModal.style.opacity = 0;
     }
 }
@@ -676,8 +655,6 @@ if (viewInvoiceBtn) {
     console.warn("Warning: 'View Invoice' button (ID: modal-btn-confirm-invoice) not found.");
 }
 
-
-
 window.printInvoice = function() {
     window.print();
 };
@@ -692,7 +669,6 @@ function clearCheckoutForm() {
         updateOrderSummary();
 
         clearInputs();
-        cartIcon.length === 0;
 
         showToast(toastSuccessMsg, 'Order placed successfully and cart cleared!');
         
@@ -709,8 +685,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Login/Register Modal elements
     const loginRegisterModal = document.getElementById('loginRegisterModal');
-    // Declare openModalBtn as `let` here to allow re-assignment after cloning
-    let openModalBtn = document.getElementById('openModalBtn');
+
     const formCancelBtn = document.querySelector('.form-cancel');
 
     const loginForm = document.getElementById('login-form') || document.querySelector(".login-form");
@@ -728,12 +703,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginRegisterModal) loginRegisterModal.style.display = 'none';
     if (loginBtn) loginBtn.style.backgroundColor = "#527125";
 
+    if (purchaseButton) {
+        purchaseButton.addEventListener("click", (e) => {
+        
+        e.preventDefault();
+
+        if (!signedInUser) {
+            showToast(toastErrorMsg, "Please sign in to purchase this cart!");
+            showLoginRegisterModal();
+            return;
+        }
+
+        if (cartItems.length === 0) {
+            showToast(toastErrorMsg, "Can't purchase an empty cart!");
+            return;
+        }
+
+        if (!validInputs()) {
+            showToast(toastErrorMsg, "Please fix the form errors before proceeding.");
+            return;
+        }
+
+        togglePurchaseModal();
+    });
+    }
+
     function showUsername() {
         let currentOpenModalBtn = document.getElementById('openModalBtn');
 
         if (!currentOpenModalBtn) {
             console.error("ERROR: openModalBtn element not found in showUsername!");
-            return; // Exit if button not found
         }
 
         const newButton = currentOpenModalBtn.cloneNode(true);
@@ -741,17 +740,13 @@ document.addEventListener('DOMContentLoaded', () => {
         currentOpenModalBtn = newButton;
         openModalBtn = newButton;
 
-
         const loggedInUserString = localStorage.getItem("user");
 
         if (loggedInUserString) {
             try {
+                signedInUser = true;
                 const user = JSON.parse(loggedInUserString);
                 const currentTime = new Date().getTime();
-
-                console.log("Current time:", currentTime);
-                console.log("User loginTime:", user.loginTime);
-                console.log("User sessionDuration:", user.sessionDuration);
 
                 // Check if loginTime and sessionDuration exist and if the session has expired
                 if (user && user.username && user.loginTime && user.sessionDuration &&
@@ -763,7 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     // Session expired or data corrupted, log out the user
 
-                    logoutUser(false); // Call logout but don't show "Logged out successfully" toast again
+                    logoutUser(false); // Call logout
 
                     currentOpenModalBtn.textContent = "Login/Register";
                     currentOpenModalBtn.addEventListener('click', showLoginRegisterModal);
@@ -778,7 +773,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // User is not logged in, show default text
 
             currentOpenModalBtn.textContent = "Login/Register";
-            currentOpenModalBtn.addEventListener('click', showLoginRegisterModal); // Ensure modal opening listener is active
+            currentOpenModalBtn.addEventListener('click', showLoginRegisterModal);
         }
     }
 
@@ -787,12 +782,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function logoutUser(showToastMsg = true) {
-
         localStorage.removeItem("user"); // Remove the logged-in user data
         localStorage.removeItem("cartItems");
 
         cartItems = []; // Clear current cart in memory
         displayCart(); // Update cart display
+
+        signedInUser = false;
 
         if (showToastMsg) {
             showToast(toastSuccessMsg, "Logged out successfully!");
@@ -808,6 +804,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loginRegisterModal) loginRegisterModal.style.display = 'flex';
         if (loginBtn) loginBtn.style.backgroundColor = "#527125";
         if (registerBtn) registerBtn.style.backgroundColor = "rgba(255, 255, 255, .2)";
+
         if (loginForm) {
             loginForm.style.left = "50%";
             loginForm.style.opacity = 1;
@@ -821,11 +818,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideLoginRegisterModal() {
       
         if (loginRegisterModal) loginRegisterModal.style.display = 'none';
-        // Reset forms to initial hidden state for next opening
+
         if (loginForm) {
             loginForm.style.left = "50%";
             loginForm.style.opacity = 1;
         }
+
         if (registerForm) {
             registerForm.style.left = "-50%";
             registerForm.style.opacity = 0;
@@ -833,7 +831,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listeners for opening and closing login/register modal
-    // The openModalBtn event listener is now managed by showUsername().
     if (formCancelBtn) {
         formCancelBtn.addEventListener('click', hideLoginRegisterModal);
     }
@@ -909,7 +906,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (existingUser) {
                 var parsedUser = JSON.parse(existingUser);
                 if (parsedUser.password === passwordInput) {
-                    // Corrected: Combine user data and timestamp creation into one step
+
                     const userWithTimestamp = {
                         ...parsedUser, // Use spread operator to copy existing user properties
                         loginTime: new Date().getTime(),
@@ -919,13 +916,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem("user", JSON.stringify(userWithTimestamp));
                     showToast(toastSuccessMsg, "Login successful!");
                     hideLoginRegisterModal();
-                    showUsername(); // Call showUsername to update the button display and attach the correct listener
+                    showUsername();
 
                 } else {
                     showToast(toastInvalidMsg, "Incorrect password!");
                 }
             } else {
-                showToast(toastErrorMsg, "User not found! Please register or check username.");
+                showToast(toastErrorMsg, "User Not Found!");
             }
         });
     }
@@ -982,8 +979,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (invoiceModalElement) invoiceModalElement.classList.remove("active");
             const blur = document.getElementById("blur");
             if (blur) blur.classList.remove("active");
+
+            clearCheckoutForm();
         };
     }
+
+    if (exitBtn) {
+        exitBtn.addEventListener("click", () => {
+        const purchaseModal = document.getElementById("popup");
+
+        if (invoiceModalElement) invoiceModalElement.classList.remove("active");
+        const blur = document.getElementById("blur");
+        if (blur) blur.classList.remove("active");
+        if (purchaseModal) purchaseModal.classList.remove("active");
+
+        clearCheckoutForm();
+    });
+    }   
 
     showUsername(); // Initial call to set the button state
 });
