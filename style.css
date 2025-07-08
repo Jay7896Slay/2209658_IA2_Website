@@ -232,13 +232,13 @@ iframe {
 .modal {
   display: flex;
   position: fixed;
-  z-index: 10000;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-items: center;
   transition: fade .3s ease;
@@ -1670,7 +1670,7 @@ p {
   background: #FFF;
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
-  z-index: 1001;
+  z-index: 700;
   transition: all 0.35s ease;
   overflow-y: scroll;
 }
@@ -2368,7 +2368,7 @@ p {
   flex-direction: column;
   overflow: hidden;
   padding: 20px;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .toast {
@@ -2419,19 +2419,19 @@ p {
 }
 
 .toast.error ion-icon {
-  background-color: #FBA211;
+  color: #FBA211;
 }
 
 .toast.invalid ion-icon {
-  background-color: #7C1235;
+  color: #7C1235;
 }
 
 .toast.error {
-  background-color: #f46c06;
+  color: #f46c06;
 }
 
 .toast.invalid {
-  background-color: #DB1E48;
+  color: #DB1E48;
 }
 
 .toast::after {
