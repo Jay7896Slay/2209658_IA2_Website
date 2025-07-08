@@ -16,6 +16,21 @@
 
 <body>
 
+  <!-- logout con -->
+  <article class="modal-con" id="log-out">
+    <div class="content">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <div class="confirmation-message">
+        <h2>Log Out Confirmation</h2>
+        <p>So sad to see you go... Are you sure you want to log out?</p>
+        <div class="modal-btns">
+          <button class="modal-btn-yes" id="confirmLogoutBtn">Yes</button>
+          <button class="modal-btn-no" id="cancelLogoutBtn">No</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
   <!--     purchase confirmation -->
   <article class="modal-con" id="popup">
     <div class="content">
@@ -41,6 +56,128 @@
 
     </div>
   </article>
+
+  <!--   login/register forms -->
+  <div id="loginRegisterModal" class="modal">
+    <div class="modal-content">
+      <div class="form-con">
+        <ion-icon name="close-outline" class="form-cancel"></ion-icon>
+        
+        <div class="col col-1">
+          <div class="image-layer">
+            <img src="logo.jpg" alt="Florescence Logo" class="form-img">
+          </div>
+          <p class="feat-words">A plethora of deals awaits you </p>
+        </div>
+
+        <div class="col col-2">
+          <div class="btn-box">
+            <button class="btn btn-1" id="login">
+              Sign In
+            </button>
+
+            <button class="btn btn-2" id="register">
+              Sign Up
+            </button>
+          </div>
+
+          <form class="login-form" id="login-form">
+            <div class="form-title">
+              <span>Sign In</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="input-box">
+                <input type="text" placeholder="Username..." class="input-field" required minlength="6">
+                <ion-icon name="person-outline"></ion-icon>
+              </div>
+
+              <div class="input-box">
+                <input type="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#">Forgot Password?</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-in-btn">
+                  <span>Sign In</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+
+          <form class="register-form" id="register-form">
+            <div class="form-title">
+              <span>Register</span>
+            </div>
+
+            <div class="form-inputs">
+              <div class="grid">
+                <div class="input-box">
+                  <input type="text" placeholder="First Name..." id="first-name" class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="last-name" placeholder="Last Name..." class="input-field" required minlength="2">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="email" id="email" placeholder="Email..." class="input-field" required pattern=".+@gmail\.com">
+                  <ion-icon name="mail-outline"></ion-icon>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" id="username" placeholder="Username..." class="input-field" required minlength="6">
+                  <ion-icon name="person-outline"></ion-icon>
+                </div>
+              </div>
+
+              <label for="dob">Date Of Birth</label>
+              <div class="input-box">
+                <input type="date" id="dob" class="input-field" required max="2012-12-31">
+              </div>
+
+              <div class="input-box">
+                <input type="password" id="password" placeholder="Password..." class="input-field" required minlength="8">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              </div>
+
+              <div class="forgot-pass">
+                <a href="#login">Already have an account? Login Now!</a>
+              </div>
+
+              <div class="input-box">
+                <button class="input-submit" id="sign-up-btn">
+                  <span>Register</span>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+
+            <div class="social-login">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-google"></ion-icon>
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--   invoice section -->
   <article id="invoiceModal" class="invoice-modal">
