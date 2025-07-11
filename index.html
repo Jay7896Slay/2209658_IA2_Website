@@ -8,14 +8,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-
-  <link rel="icon" type="image/x-icon" href="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg">
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="logo.jpg">
 
   <title>Florescence: Life Blooms Here</title>
 </head>
 
 <body>
 
+  <!-- logout con -->
+  <article class="modal-con" id="log-out">
+    <div class="content">
+      <ion-icon name="leaf-outline"></ion-icon>
+      <div class="confirmation-message">
+        <h2>Log Out Confirmation</h2>
+        <p>So sad to see you go... Are you sure you want to log out?</p>
+        <div class="modal-btns">
+          <button class="modal-btn-yes" id="confirmLogoutBtn">Yes</button>
+          <button class="modal-btn-no" id="cancelLogoutBtn">No</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="main-con" id="blur">
   <!--   header section -->
   <header class="header">
 
@@ -111,7 +127,7 @@
         
         <div class="col col-1">
           <div class="image-layer">
-            <img src="https://i.pinimg.com/736x/f6/99/7e/f6997e5f24fb63088623fbae4dd5f541.jpg" alt="Florescence Logo" class="form-img">
+            <img src="logo.jpg" alt="Florescence Logo" class="form-img">
           </div>
           <p class="feat-words">A plethora of deals awaits you </p>
         </div>
@@ -317,7 +333,7 @@
       <div class="product-item">
         <div class="product-img">
           <img src="euphorbia-hybrid.jpg" alt="Flower Pot" class="product-img">
-        <span>New</span>
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -334,7 +350,7 @@
         <div class="product-item">
         <div class="product-img">
           <img src="lavender-rose.jpg" alt="Flower Pot" class="product-img">
-        <span>Almost Out Of Stock</span>
+        <span class="limited-item">Almost Out Of Stock</span>
           </div>
         
         <div class="product-desc">
@@ -351,7 +367,7 @@
         <div class="product-item">
         <div class="product-img">
           <img src="molten-pearl.jpg" alt="Flower Pot" class="product-img">
-        <span>Trending</span>
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -368,7 +384,7 @@
         <div class="product-item">
         <div class="product-img">
           <img src="verbena-hybrid.jpg" alt="Flower Pot" class="product-img">
-        <span>New</span>
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -385,7 +401,7 @@
         <div class="product-item">
         <div class="product-img">
           <img src="impatiens-walleriana.jpg" alt="Impatiens Walleriana" class="product-img">
-        <span>Trending</span>
+        <span class="trending-item">Trending</span>
           </div>
         
         <div class="product-desc">
@@ -402,7 +418,7 @@
         <div class="product-item">
         <div class="product-img">
           <img src="coralina-calibrachoa.jpg" alt="Superbells® Coralina Calibrachoa" class="product-img">
-        <span>New</span>
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -419,7 +435,7 @@
         <div class="product-item">
         <div class="product-img">
           <img src="pelargonium-interspecific.jpg" alt="Pelargonium Interspecific" class="product-img">
-        <span>New</span>
+        <span class="new-item">New</span>
           </div>
         
         <div class="product-desc">
@@ -436,7 +452,7 @@
         <div class="product-item">
         <div class="product-img">
           <img src="begonia-semperflorens.jpg" alt="Begonia Semperflorens" class="product-img">
-        <span>Almost Out of Stock</span>
+        <span class="limited-item">Almost Out of Stock</span>
           </div>
         
         <div class="product-desc">
@@ -522,6 +538,7 @@
       <p>Copyright &copy; 2025 | Designed by Jada Johnson | All Rights Reserved</p>
     </div>
   </footer>
+</div>
 
   <script src="script.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
